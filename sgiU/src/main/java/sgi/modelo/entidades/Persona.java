@@ -11,16 +11,19 @@ import java.util.regex.Pattern;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -32,8 +35,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name="persona")
-
+@DiscriminatorColumn(name = "tipo_persona", discriminatorType = DiscriminatorType.STRING )
 @NamedQueries(
 	   {@NamedQuery(name = "personasAll", query = "FROM Persona"),
 		@NamedQuery(name = "personaById", query = "SELECT p FROM Persona p WHERE p.idPersona = :idPersona"),

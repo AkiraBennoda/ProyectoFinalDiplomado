@@ -240,3 +240,26 @@ INSERT INTO `tipopago` (`idTipoPago`, `nombre`) VALUES
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+
+
+CREATE TABLE Alumno
+(
+	idAlumno            BIGINT PRIMARY KEY AUTO_INCREMENT, 
+	matricula           VARCHAR(50) UNIQUE NOT NULL,
+	calificacion        DECIMAL  NOT NULL CHECK( calificacion > 7.0),
+	activo              INTEGER   NOT NULL,
+   idPersona           BIGINT NOT NULL,
+         
+	
+	 	CONSTRAINT FK_Persona FOREIGN KEY (idPersona)
+   REFERENCES Persona(idPersona)
+   
+);
+
+
+
+
+
+
+
+

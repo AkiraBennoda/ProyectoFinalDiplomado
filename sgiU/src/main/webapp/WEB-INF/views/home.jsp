@@ -6,6 +6,7 @@
 <spring:url value="/pagoCursos/listar" var="ordenPagoCursosLink" />
 <spring:url value="/cursos/listar" var="cursosLink" />
 <spring:url value="/facturas/listar" var="facturasLink" />
+<spring:url value="/alumnos/listar" var="alumnosLink" />
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -61,7 +62,7 @@
 						<spring:message code="label.titulo.maestros" />
 					</a>
 					<br/>
-					<a class="btn btn-outline-info my-3" href="${personasLink}" role="button">
+					<a class="btn btn-outline-info my-3" href="${alumnosLink}" role="button">
 						<spring:message code="label.titulo.alumnos" />
 					</a>
 					<br/>
