@@ -34,7 +34,7 @@ import sgi.service.TipoPagoService;
 @Controller
 public class HomeController {
 	
-	@Autowired
+	/*@Autowired
 	private ServletContext servletContext;
 	
 	@Autowired
@@ -134,5 +134,5 @@ public class HomeController {
 		
 		
 		return new ModelAndView("home");
-	}
+	}*/
 }

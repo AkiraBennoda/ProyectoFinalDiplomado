@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="alumno")
-@DiscriminatorValue(value = "alumno_p")
+@DiscriminatorValue(value = "matricula")
 public class Alumno extends Persona{
 	
 	private Integer idAlumno;
@@ -25,10 +25,6 @@ public class Alumno extends Persona{
 		// TODO Auto-generated constructor stub
 	}
 	
-
-	
-
-
 
 	public Alumno(Integer idAlumno) {
 		super();

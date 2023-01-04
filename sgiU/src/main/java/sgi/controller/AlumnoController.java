@@ -99,6 +99,7 @@ public class AlumnoController {
 			Alumno alumno = alumnoForm.getIdAlumno() != null ? alumnoService.cargaAlumno(alumnoForm.getIdAlumno()) : new Alumno();			
 			alumno.setMatricula(alumnoForm.getMatricula());
 			alumno.setCalificacion(alumnoForm.getCalificacion());
+		
 			
 			
 
