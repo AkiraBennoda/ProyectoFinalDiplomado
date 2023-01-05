@@ -11,14 +11,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import sgi.modelo.entidades.Alumno;
+import sgi.modelo.entidades.Curso;
+import sgi.modelo.entidades.Factura;
 import sgi.modelo.entidades.Genero;
 import sgi.modelo.entidades.Idioma;
 import sgi.modelo.entidades.Modalidad;
 import sgi.modelo.entidades.Nacionalidad;
 import sgi.modelo.entidades.Nivel;
+import sgi.modelo.entidades.Persona;
 import sgi.modelo.entidades.TipoCurso;
 import sgi.modelo.entidades.TipoPago;
-
+import sgi.service.AlumnoService;
+import sgi.service.CursoService;
+import sgi.service.FacturaService;
 import sgi.service.GeneroService;
 import sgi.service.IdiomaService;
 import sgi.service.ModalidadService;
@@ -63,7 +69,15 @@ public class LoginController {
 	@Autowired
 	private NivelService nivelService;
 	
+	@Autowired
+	private FacturaService facturaService;
 	
+	@Autowired
+	private CursoService cursoService;
+	
+
+	@Autowired
+	private AlumnoService alumnoService;
 	
 	
 	@GetMapping("/login")
@@ -128,6 +142,30 @@ public class LoginController {
 			}
 			
 			
+			
+			/**********Implementacion inscripcion***************/
+			List<Factura> listaF = facturaService.cargaFacturas();
+			List<String> listaFactura = new ArrayList<String>();
+			for (Factura factura : listaF) {
+				listaFactura.add(factura.getFolioFactura());
+			}
+			
+			
+			List<Curso> listaC = cursoService.cargaCursos();
+			List<String> listaCurso = new ArrayList<String>();
+			for (Curso curso: listaC) {
+				listaCurso.add(curso.getCodigoCurso());
+			}
+			
+			List<Persona> listaA = alumnoService.cargaAlumnos();
+			List<String> listaAlumno = new ArrayList<String>();
+			for (Persona alumno: listaA) {
+				listaAlumno.add(alumno.getNombre());
+			}
+		
+			/*********************/
+			
+			
 			servletContext.setAttribute("generoList", listaGenero);
 			servletContext.setAttribute("nacionalidadList", listaNacionalidad);
 			servletContext.setAttribute("tipoPagoList", listaTipoPago);
@@ -135,6 +173,9 @@ public class LoginController {
 			servletContext.setAttribute("tipoCursoList", listaTipoCurso);
 			servletContext.setAttribute("modalidadList", listaModalidad);
 			servletContext.setAttribute("nivelList", listaNivel);
+			servletContext.setAttribute("facturaList", listaFactura);
+			servletContext.setAttribute("cursoList", listaCurso);
+			servletContext.setAttribute("alumnoList", listaAlumno);
 			
 			
 			
@@ -148,8 +189,6 @@ public class LoginController {
 		
 	}
 	
-	
-	
-	/*****Implementacion***************/
+
 	
 }

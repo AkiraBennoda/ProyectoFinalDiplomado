@@ -26,7 +26,7 @@ public class XlsView extends AbstractXlsView {
         response.setHeader("Content-Disposition", "attachment; filename=\"personas.xls\"");
 
         // crear una pagina excel
-        Sheet sheet = workbook.createSheet("Lista Personas");
+        Sheet sheet = workbook.createSheet("Lista Alumnos");
 
         Row header = sheet.createRow(0);
 

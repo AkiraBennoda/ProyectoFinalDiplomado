@@ -3,6 +3,7 @@ package sgi.service;
 import java.util.List;
 
 import sgi.modelo.entidades.Curso;
+
 	
 
 public interface CursoService {
@@ -11,4 +12,5 @@ public interface CursoService {
 	void guardaCurso(Curso curso);
 	Curso cargaCurso(Integer idCurso);
 	void eliminaCurso(Integer idCurso);
+	Curso cargaPorNombre(String nombre);
 }

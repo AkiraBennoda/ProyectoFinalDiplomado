@@ -3,9 +3,11 @@ package sgi.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import sgi.modelo.entidades.Factura;
+import sgi.modelo.entidades.Persona;
 import sgi.modelo.repository.FacturaRepository;
 
 @Service
@@ -36,4 +38,17 @@ public class FacturaServiceImpl implements FacturaService {
 		
 	}
 
+	@Override
+	public Factura cargaPorNombre(String nombre) {
+		Factura encontrado = null;
+		Factura facturaExample = new Factura();
+		facturaExample.setFolioFactura(nombre);
+		Example<Factura> tCExample = Example.of(facturaExample);
+		Iterable<Factura> it = facturaRepository.findAll(tCExample);
+		for (Factura factura: it) {
+			encontrado = factura;
+		}
+		return encontrado; 
+	}
+	
 }

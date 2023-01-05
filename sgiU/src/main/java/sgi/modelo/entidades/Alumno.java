@@ -10,30 +10,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="alumno")
-@DiscriminatorValue(value = "matricula")
+@DiscriminatorValue(value = "ALUMNO")
 public class Alumno extends Persona{
 	
-	private Integer idAlumno;
+	//private Integer idAlumno;
 	private String matricula;
 	private double calificacion;
 	
-	
-	
-	
 	public Alumno() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
-
-	public Alumno(Integer idAlumno) {
-		super();
-		this.idAlumno = idAlumno;
-	}
-
-
-
-
 
 
 	public Alumno(String matricula, double calificacion) {
@@ -43,14 +29,6 @@ public class Alumno extends Persona{
 		
 	}
 
-
-	@Column(name = "idAlumno")
-	public Integer getIdAlumno() {
-		return idAlumno;
-	}
-	public void setIdAlumno(Integer idAlumno) {
-		this.idAlumno = idAlumno;
-	}
 	
 	@Column(name = "matricula", length = 50)
 	public String getMatricula() {
@@ -73,7 +51,7 @@ public class Alumno extends Persona{
 
 	@Override
 	public String toString() {
-		return "Alumno [idAlumno=" + idAlumno + ", matricula=" + matricula + ", calificacion=" + calificacion + "]";
+		return "Alumno [matricula=" + matricula + ", calificacion=" + calificacion + "]";
 	}
 
 
@@ -85,7 +63,7 @@ public class Alumno extends Persona{
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(calificacion, idAlumno, matricula);
+		result = prime * result + Objects.hash(calificacion, matricula);
 		return result;
 	}
 
@@ -104,7 +82,7 @@ public class Alumno extends Persona{
 			return false;
 		Alumno other = (Alumno) obj;
 		return Double.doubleToLongBits(calificacion) == Double.doubleToLongBits(other.calificacion)
-				&& Objects.equals(idAlumno, other.idAlumno) && Objects.equals(matricula, other.matricula);
+				 && Objects.equals(matricula, other.matricula);
 	}
 
 

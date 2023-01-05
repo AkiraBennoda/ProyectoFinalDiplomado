@@ -52,7 +52,7 @@ public Set<Authority> getAuthority() {
 	return authority;
 }
 
-
+/**Ver referencia : http://cristianruizblog.com/spring-boot-security-login/    para mejorar impolementacion**/
 
 @ManyToMany(fetch = FetchType.EAGER)
 @JoinTable(name="authorities_users",

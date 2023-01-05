@@ -5,6 +5,6 @@
 <web-app>
   <display-name>sgioRG</display-name>
    <session-config>
-  	<session-timeout>5</session-timeout>
+  	<session-timeout>60</session-timeout>
   </session-config>
 </web-app>

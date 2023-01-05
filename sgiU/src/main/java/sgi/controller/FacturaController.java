@@ -33,10 +33,7 @@ public class FacturaController {
 	@Autowired
 	private FacturaService facturaService;
 	
-	
 
-	
-	
 	@ResponseBody
 	@RequestMapping(value = {"/jsonFactura"})	
     public List<Factura> facturaJson() {

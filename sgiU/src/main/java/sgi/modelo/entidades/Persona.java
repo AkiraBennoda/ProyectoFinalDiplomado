@@ -37,7 +37,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name="persona")
-@DiscriminatorColumn(name = "tipo_persona", discriminatorType = DiscriminatorType.STRING )
+@DiscriminatorColumn(name = "tipo_persona", 
+					 discriminatorType = DiscriminatorType.STRING )
 @NamedQueries(
 	   {@NamedQuery(name = "personasAll", query = "FROM Persona"),
 		@NamedQuery(name = "personaById", query = "SELECT p FROM Persona p WHERE p.idPersona = :idPersona"),

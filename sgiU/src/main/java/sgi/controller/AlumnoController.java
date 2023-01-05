@@ -1,11 +1,8 @@
 package sgi.controller;
 
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+
 
 import javax.validation.Valid;
 
@@ -23,7 +20,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import sgi.forms.AlumnoForm;
-import sgi.forms.PersonaForm;
 import sgi.modelo.entidades.Alumno;
 import sgi.modelo.entidades.Genero;
 import sgi.modelo.entidades.Nacionalidad;
@@ -52,7 +48,7 @@ public class AlumnoController {
 	
 	@ResponseBody
 	@RequestMapping(value = {"/jsonAlumno"})	
-    public List<Alumno> alumnoJson() {
+    public List<Persona> alumnoJson() {
 		return alumnoService.cargaAlumnos();
     }
 	
@@ -77,26 +73,26 @@ public class AlumnoController {
 			vista.setViewName("alumnoForm");
 		} else {
 			
-			Persona persona = new Persona();			
-			persona.setNombre(alumnoForm.getNombre());
-			persona.setEdad(alumnoForm.getEdad());
-			persona.setCorreoElectronico(alumnoForm.getCorreoElectronico());
-			persona.setRfc(alumnoForm.getRfc());
-	        Genero genero = generoService.cargaPorNombre(alumnoForm.getIdGenero());
-	        persona.setIdGenero(genero);
-	        Nacionalidad nacionalidad= nacionalidadService.cargaPorNombre(alumnoForm.getIdNacionalidad());
-	        persona.setIdNacionalidad(nacionalidad);
-	    	persona.setPais(alumnoForm.getPais());
-	    	persona.setEstado(alumnoForm.getEstado());
-	    	persona.setLocalidad(alumnoForm.getLocalidad());
-	    	persona.setCalle(alumnoForm.getCalle());
-	    	persona.setCodigoPostal(alumnoForm.getCodigoPostal());
-	    	persona.setNumExt(alumnoForm.getNumExt());
-	    	persona.setNumInt(alumnoForm.getNumInt());
+		    	
+			Alumno alumno = alumnoForm.getIdPersona() != null ? (Alumno) alumnoService.cargaAlumno(alumnoForm.getIdPersona()) : new Alumno();			
 			
-	    	personaService.guardaPersona(persona);
-	    	
-			Alumno alumno = alumnoForm.getIdAlumno() != null ? alumnoService.cargaAlumno(alumnoForm.getIdAlumno()) : new Alumno();			
+						
+			alumno.setNombre(alumnoForm.getNombre());
+			alumno.setEdad(alumnoForm.getEdad());
+			alumno.setCorreoElectronico(alumnoForm.getCorreoElectronico());
+			alumno.setRfc(alumnoForm.getRfc());
+	        Genero genero = generoService.cargaPorNombre(alumnoForm.getIdGenero());
+	        alumno.setIdGenero(genero);
+	        Nacionalidad nacionalidad= nacionalidadService.cargaPorNombre(alumnoForm.getIdNacionalidad());
+	        alumno.setIdNacionalidad(nacionalidad);
+	        alumno.setPais(alumnoForm.getPais());
+	        alumno.setEstado(alumnoForm.getEstado());
+	        alumno.setLocalidad(alumnoForm.getLocalidad());
+	        alumno.setCalle(alumnoForm.getCalle());
+	        alumno.setCodigoPostal(alumnoForm.getCodigoPostal());
+	        alumno.setNumExt(alumnoForm.getNumExt());
+	        alumno.setNumInt(alumnoForm.getNumInt());
+			
 			alumno.setMatricula(alumnoForm.getMatricula());
 			alumno.setCalificacion(alumnoForm.getCalificacion());
 		
@@ -118,7 +114,7 @@ public class AlumnoController {
 	@RequestMapping("/actualizar/{idAlumno}")
     public String showFormForUpdate(@PathVariable Integer idAlumno, ModelMap model) {
 		
-		Alumno alumno= alumnoService.cargaAlumno(idAlumno);
+		Alumno alumno= (Alumno) alumnoService.cargaAlumno(idAlumno);
 		if (alumno != null) {
 			AlumnoForm alumnoForm = new AlumnoForm();
 			

@@ -1,5 +1,7 @@
 package sgi.modelo.entidades;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -118,6 +120,27 @@ public class Curso {
 
 	public void setIdNivel(Nivel idNivel) {
 		this.idNivel = idNivel;
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigoCurso, idCurso, idIdioma, idModalidad, idNivel, idTipoCurso);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Curso other = (Curso) obj;
+		return Objects.equals(codigoCurso, other.codigoCurso) && Objects.equals(idCurso, other.idCurso)
+				&& Objects.equals(idIdioma, other.idIdioma) && Objects.equals(idModalidad, other.idModalidad)
+				&& Objects.equals(idNivel, other.idNivel) && Objects.equals(idTipoCurso, other.idTipoCurso);
 	}
 	
 	

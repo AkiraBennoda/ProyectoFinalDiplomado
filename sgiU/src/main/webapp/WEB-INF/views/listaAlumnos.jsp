@@ -79,7 +79,7 @@
 
 
 								<!-- Alumno -->
-								<th><spring:message code="label.alumno.matrciula" /></th>
+								<th><spring:message code="label.alumno.matricula" /></th>
 								<th><spring:message code="label.alumno.calificacion" /></th>
 								
 							
@@ -90,10 +90,10 @@
 							<c:forEach var="alumno" items="${alumnos}">
 
 								<c:url var="updateLink"
-									value="/alumnos/actualizar/${alumno.idAlumno}" />
+									value="/alumnos/actualizar/${alumno.idPersona}" />
 
 								<c:url var="deleteLink" value="/alumnos/eliminar">
-									<c:param name="idAlumno" value="${alumno.idAlumno}" />
+									<c:param name="idAlumno" value="${alumno.idPersona}" />
 								</c:url>
 
 								<tr>
@@ -121,7 +121,7 @@
 										role="button"><spring:message code="label.alumno.editar" />
 									</a>&nbsp; <a href="${deleteLink}" class="btn btn-danger"
 										role="button"
-										onclick="if (!(confirm('<spring:message code="label.alumno.pregunta" />'))) return false">
+										onclick="if (!(confirm('<spring:message code="label.alumno.eliminar.pregunta" />'))) return false">
 											<spring:message code="label.alumno.eliminar" />
 									</a></td>
 								</tr>
